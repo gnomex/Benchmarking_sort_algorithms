@@ -1,6 +1,4 @@
 	module TextAnalysis
-		
-		require "benchmark"	
 			
 		def self.parse_file(filename)
 
@@ -25,6 +23,12 @@
 			return dup
 		end
 
-		
+		def self.distances(array)
+			distances = Hash.new(0)
+			array.each_with_index do |key, i|
+				distances[key] = [i]
+			end
+			return distances
+		end
 		
 	end

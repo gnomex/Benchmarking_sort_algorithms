@@ -1,22 +1,25 @@
-Sort Algorithms
+Algorithms and Data Structures Problem
 ====
 <p>
 	<ul>
 		<li>BubbleSort</li>
-		<li>BubbleSort Enhanced</li>
 		<li>HeapSort</li>
 		<li>InsertionSort</li>
+		<li>K-Sort</li>
 		<li>MergeSort</li>
 		<li>QuickSort</li>
 		<li>SelectionSort</li>
 		<li>ShellSort</li>
 		<li>ShakerSort</li>
+		<li>newSortMiddlePivot</li>
+		<li>newSortLeftPivot</li>
 	</ul>
 </p>
 
-<p>[Sinatra](http://www.sinatrarb.com/)</p>
-<p>[Twitter Bootstrap](http://twitter.github.com/bootstrap/)</p>
-<p>[Chart.js](http://www.chartjs.org/)</p>
+[Sinatra](http://www.sinatrarb.com/)
+[Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+[Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+[Chart.js](http://www.chartjs.org/)
 
 Go!
 ===
