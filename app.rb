@@ -8,18 +8,24 @@ configure do
 end
 
 helpers do
-	def sort(array)
-		@stats = Benchmark.bmbm do |x|
-			x.report("Buuble") { @bubble = Algorithms::Sort.bubble_sort array }
-			x.report("Comb") { @comb = Algorithms::Sort.comb_sort array }
-		    x.report("Selection") { @selection = Algorithms::Sort.selection_sort array }
-		    x.report("Heap") { @heap = Algorithms::Sort.heapsort array }
-		    x.report("Insertion") { @insertion = Algorithms::Sort.insertion_sort array }
-		    x.report("Shell") { @shell = Algorithms::Sort.shell_sort array }
-		    x.report("Quick") { @quick = Algorithms::Sort.quicksort array }
-			x.report("Merge") { @merge = Algorithms::Sort.mergesort array }
-		end
-	end
+	# def sort(array)
+	# 	@stats = Benchmark.bmbm do |x|
+	# 		x.report("Buuble") { @bubble = Algorithms::Sort.bubble_sort array }
+	# 		x.report("Comb") { @comb = Algorithms::Sort.comb_sort array }
+	#     x.report("Selection") { @selection = Algorithms::Sort.selection_sort array }
+	#     x.report("Heap") { @heap = Algorithms::Sort.heapsort array }
+	#     x.report("Insertion") { @insertion = Algorithms::Sort.insertion_sort array }
+	#     x.report("Shell") { @shell = Algorithms::Sort.shell_sort array }
+	#     x.report("Quick") { @quick = Algorithms::Sort.quicksort array }
+	# 		x.report("Merge") { @merge = Algorithms::Sort.mergesort array }
+	# 	end
+	# end
+
+	# def sort
+		
+	# 	#when sorts
+	# 	#render results ;)
+	# end
 
 end
 

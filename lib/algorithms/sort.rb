@@ -1,4 +1,5 @@
 module Algorithms::Sort
+  
   # Bubble sort: A very naive sort that keeps swapping elements until the container is sorted.
   # Requirements: Needs to be able to compare elements with <=>, and the [] []= methods should
   # be implemented for the container.
@@ -8,6 +9,14 @@ module Algorithms::Sort
   # 
   #   Algorithms::Sort.bubble_sort [5, 4, 3, 1, 2] => [1, 2, 3, 4, 5]
   def self.bubble_sort(container)
+    container.each_index do |index|
+      (container.length - 1).downto( index ) do |i|
+      container[i-1], container[i] = container[i], container[i-1] if container[i-1] > container[i]
+      end
+    end
+  end
+  # Bubble sort Enhanced
+  def self.bubble_sort_enhanced(container)
     loop do
       swapped = false
       (container.size-1).times do |i|
