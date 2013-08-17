@@ -30,7 +30,7 @@ helpers do
 end
 
 get '/' do
-  erb :stats
+  erb:index
 end
 
 get '/upload' do
