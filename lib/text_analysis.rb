@@ -1,21 +1,17 @@
 module TextAnalysis
 
-	# require "log4r"
-	# include Log4r
+	require "benchmarks"
+	require "log4r"
+	include Log4r
 
-	# # create a logger named 'mylog' that logs to stdout
-	# mylog = Logger.new 'mylog'
-	# mylog.outputters = Outputter.stdout
+	# create a logger named 'logger' that logs to stdout
+	@logger = Logger.new 'algorithms'
+	@logger.outputters = FileOutputter.new("f1", :filename => "./log/sort_algorithms.log")
 
-	# 	# Now we can log.
-	# def do_log(log)
-	#   log.debug "This is a message with level DEBUG"
-	#   log.info "This is a message with level INFO"
-	#   log.warn "This is a message with level WARN"
-	#   log.error "This is a message with level ERROR"
-	#   log.fatal "This is a message with level FATAL"
-	# end
-	# do_log(mylog)
+	def do_log(message)
+		@logger.info message
+	end
+
 
 	def self.parse_and_load_files(filename)
 
@@ -36,7 +32,7 @@ module TextAnalysis
 				line.gsub!(/\r\n?/, "\n")	#Line break
 				contents << line.to_i
 			end
-			#do_log "#{file}, quantity of elements: #{contents.size}"
+			do_log "#{file}, quantity of elements: #{contents.size}"
 			#Sort and benchmark!
 			sort_and_measure contents
 		end
