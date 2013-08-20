@@ -40,10 +40,15 @@ end
 get '/analyse/:file' do
 
 	file_name = params[:file]
+	
+	path = "./upload/#{file_name}"
 
-	TextAnalysis.parse_and_load_file file_name
+	analyser = TextAnalysis::TextAnalysis.new
+	analyser.parse path
+	analyser.load_files
 
-	erb:analysis
+	erb "Success!!!"
+	#erb:analysis
 end
 
 error 400..510 do

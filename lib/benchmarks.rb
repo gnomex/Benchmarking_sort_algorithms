@@ -1,7 +1,6 @@
 module Benchmarks
 
 	require 'benchmark'
-	require "algorithms"
 
 	def self.sort_and_measure(collection_of_samples, logger)
 		

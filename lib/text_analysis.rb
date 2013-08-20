@@ -1,43 +1,39 @@
 module TextAnalysis
 
 	class TextAnalysis
-		
-		require "benchmarks"
-		require "logger"
 
-		def initialize(args)
-			storage = File.open("./log/sort_algorithms.log", "a+")
+		def initialize
+			storage = File.open("./log/sort_algorithms.log", "w+")
 			@logger = Logger.new(storage)
 		end
 
-		def self.parse_and_load_files(filename)
+		def parse(filename)
 
-			other_files = Array.new
+			@other_files = Array.new
 			
-			File.open(filename).each_line do |line|
+			File.open(filename, "r").each_line do |line|
 				line.gsub!(/\r\n?/, "\n")
-
-				other_files <<  line
-
+				@other_files <<  line
 			end
+		end
 
-			other_files.each_with_index do |file, index|
+		def load_files
+
+			@other_files.each do |file|
 
 				contents = Array.new
 				
-				File.open("./upload/#{file}", "w").each_line do |line|
+				File.open("./upload/#{file}").each_line do |line|
 					line.gsub!(/\r\n?/, "\n")	#Line break
-					contents << line.to_i
+					contents << line[/[0-9]/].to_i
 				end
 				@logger << "#{file}, quantity of elements: #{contents.size}"
 				#Sort and benchmark!
-				sort_and_measure contents, @logger
+				Benchmarks.sort_and_measure contents, @logger
 			end
 
 			@logger.close
-
-		end
-		
+		end		
 	end
 
 end

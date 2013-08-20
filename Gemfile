@@ -11,4 +11,5 @@ end
 
 group :development, :test do
 	gem "rspec", "~> 2.14.1"
+	gem "pry", "~> 0.9.12.2"
 end
