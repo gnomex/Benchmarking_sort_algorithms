@@ -2,19 +2,21 @@ module TextAnalysis
 
 	class TextAnalysis
 
+		attr_reader :other_files
+
 		def initialize
-			storage = File.open("./log/sort_algorithms.log", "w+")
+			storage = File.open("./log/sort_algorithms.log", "a+")
 			@logger = Logger.new(storage)
 		end
 
 		def parse(filename)
-
-			@other_files = Array.new
 			
 			File.open(filename, "r").each_line do |line|
-				line.gsub!(/\r\n?/, "\n")
-				@other_files <<  line
+				line.gsub!(/\r\n?/, "")
+				@other_files =  line.split(',')
 			end
+			@other_files.flatten
+			@logger << "Files: #{other_files.inspect}"
 		end
 
 		def load_files
@@ -23,10 +25,13 @@ module TextAnalysis
 
 				contents = Array.new
 				
-				File.open("./upload/#{file}").each_line do |line|
+				@logger << "Try open #{file}"
+
+				File.open("./upload/#{file}", 'r').each_line do |line|
 					line.gsub!(/\r\n?/, "\n")	#Line break
-					contents << line[/[0-9]/].to_i
+					contents << line.to_i
 				end
+				
 				@logger << "#{file}, quantity of elements: #{contents.size}"
 				#Sort and benchmark!
 				Benchmarks.sort_and_measure contents, @logger

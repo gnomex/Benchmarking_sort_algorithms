@@ -5,7 +5,7 @@ class Logger
   end
 
   def <<(message)
-    @storage << message << "\n"
+    @storage << "#{message} \n"
   end
 end
 

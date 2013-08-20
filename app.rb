@@ -3,6 +3,7 @@ require 'json'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
+  set :upload, Proc.new { File.join(root, "upload") }
   enable :sessions
 end
 
