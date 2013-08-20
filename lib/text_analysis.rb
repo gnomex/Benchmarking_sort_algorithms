@@ -1,34 +1,45 @@
-	module TextAnalysis
-			
-		def self.parse_file(filename)
+module TextAnalysis
+
+	# require "log4r"
+	# include Log4r
+
+	# # create a logger named 'mylog' that logs to stdout
+	# mylog = Logger.new 'mylog'
+	# mylog.outputters = Outputter.stdout
+
+	# 	# Now we can log.
+	# def do_log(log)
+	#   log.debug "This is a message with level DEBUG"
+	#   log.info "This is a message with level INFO"
+	#   log.warn "This is a message with level WARN"
+	#   log.error "This is a message with level ERROR"
+	#   log.fatal "This is a message with level FATAL"
+	# end
+	# do_log(mylog)
+
+	def self.parse_and_load_files(filename)
+
+		other_files = Array.new
+		
+		File.open(filename).each_line do |line|
+			line.gsub!(/\r\n?/, "\n")
+
+			other_files <<  line
+
+		end
+
+		other_files.each_with_index do |file, index|
 
 			contents = Array.new
-
-			File.open(filename).each_line do |line|
-				line.gsub!(/\r\n?/, "\n")
-				line.downcase!
-				mapping = line[/[a-z\s!\.\,;_]*/].each_char.to_a 
-				contents <<  mapping
+			
+			File.open("./upload/#{file}", "w").each_line do |line|
+				line.gsub!(/\r\n?/, "\n")	#Line break
+				contents << line.to_i
 			end
-			contents.flatten
+			#do_log "#{file}, quantity of elements: #{contents.size}"
+			#Sort and benchmark!
+			sort_and_measure contents
 		end
-
-		#
-		def self.frequency(array)
-
-			dup = Hash.new(0)
-
-			array.each { |letter| dup[letter] += 1}
-
-			return dup
-		end
-
-		def self.distances(array)
-			distances = Hash.new(0)
-			array.each_with_index do |key, i|
-				distances[key] = [i]
-			end
-			return distances
-		end
-		
 	end
+
+end
