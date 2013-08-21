@@ -25,18 +25,18 @@ Samples
 <p>
 	<b>Hash structure:</b>
 	<pre><code>
-		{ :samples_of_file_1 => [{ :sort1 => [Benchmark::Tms]},
-								{ :sort2 => [Benchmark::Tms]},
-								{ :sortn => [Benchmark::Tms]}
-								],
-		 :samples_of_file_2 => [{ :sort1 => [Benchmark::Tms]},
-								{ :sort2 => [Benchmark::Tms]},
-								{ :sortn => [Benchmark::Tms]}
-								],
-		 :samples_of_file_n => [{ :sort1 => [Benchmark::Tms]},
-								{ :sort2 => [Benchmark::Tms]},
-								{ :sortn => [Benchmark::Tms]}
-								]
+		{ :samples_of_file_1 => { :sort1 => [Benchmark::Tms],
+								  :sort2 => [Benchmark::Tms],
+								  :sortn => [Benchmark::Tms]
+								},
+		 :samples_of_file_2 => { :sort1 => [Benchmark::Tms],
+								 :sort2 => [Benchmark::Tms],
+								 :sortn => [Benchmark::Tms]
+								},
+		 :samples_of_file_n => { :sort1 => [Benchmark::Tms],
+								 :sort2 => [Benchmark::Tms],
+								 :sortn => [Benchmark::Tms]
+								}
 		}
 	</code></pre>
 </p>

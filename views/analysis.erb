@@ -4,8 +4,6 @@
     <section id="errors">
         <%if @error then %>
           <div class="alert alert-error"><%=@error%></div>
-        <% else %>
-          <p class="alert alert-success">File is: <strong><%= @file_name %></strong></p>
         <% end %>
       </section> 
   </section>
@@ -15,7 +13,6 @@
     <thead>
         <tr>
           <th># Arquivo</th>
-          <th>Quantity of elements</th>
           <th>BubbleSort</th>
           <th>BubbleSort Enhanced</th>
           <th>SelectionSort</th>
@@ -24,23 +21,15 @@
           <th>ShellSort</th>
           <th>QuickSort</th>
           <th>MergeSort</th>
-          <th>ShekerSort</th>
         </tr>
     </thead>
     <tbody>
-      <% @contents.each do |line| %>
+      <% @report.each do |key, value| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= key %></td>
+          <% value.each do |algorithm, tms| %>
+           <td><%= tms %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

@@ -8,9 +8,7 @@ configure do
 end
 
 helpers do
-	# def load_report
-		
-	# end
+
 end
 
 get '/' do
@@ -44,8 +42,11 @@ get '/analyse/:file' do
 	analyser.parse path
 	analyser.load_files
 
-	erb "Success!!!"
-	#erb:analysis
+	# WARNING
+	# Need refactoring!!!
+	@report = analyser.report
+
+	erb :analysis
 end
 
 error 400..510 do

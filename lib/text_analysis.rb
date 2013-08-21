@@ -4,7 +4,7 @@ module TextAnalysis
 
 		require 'logger'
 
-		attr_reader :other_files
+		attr_reader :other_files, :report
 
 		def initialize
 			# storage = File.open("./log/sort_algorithms.log", "a+")
@@ -14,18 +14,26 @@ module TextAnalysis
 
 		def parse(filename)
 			
+			@logger.info "Parsing a file uploaded"
+
 			File.open(filename, "r").each_line do |line|
 				line.gsub!(/\r\n?/, "")
 				@other_files =  line.split(',')
 			end
+
 			@other_files.flatten
+			@logger.info "Ok. Files: #{other_files.inspect}"
 		end
 
 		def load_files
 
+			@logger.info "Start a load samples from files"
+
+			@report = Hash.new
+
 			@other_files.each do |file|
 
-				@logger.info "=== #{file} ==="
+				@logger.info "=== Parsing #{file} ==="
 
 				contents = Array.new
 
@@ -35,10 +43,11 @@ module TextAnalysis
 				end
 				
 				@logger.info "#{file}, quantity of elements: #{contents.size}"
-				#Sort and benchmark!
-				Benchmarks.sort_and_measure contents, @logger
-			end
 
+				@report[file] = Benchmarks.sort_and_measure contents, @logger
+
+				@logger.warn "#{@report.inspect}"
+			end
 		end		
 	end
 

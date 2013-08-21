@@ -7,14 +7,21 @@ module Benchmarks
 		sorts = %w(bubble_sort bubble_sort_enhanced selection_sort insertion_sort heapsort
       shell_sort quicksort mergesort)
 
+		results = Hash.new(0)
+
 		sorts.each do |algorithm|
+
 			logger.info " -> Algorithm: #{algorithm} "
-			te = Benchmark.bmbm do |x|
+			
+			ts = Benchmark.bmbm do |x|
 				x.report("#{algorithm}") { Algorithms::Sort.send(algorithm, collection_of_samples) }
 			end
-			logger.info "Times: #{te.inspect}"
+
+			results[algorithm] = ts
+
+			logger.info "Times: #{ts.inspect}"
 		end
-		
+		return results
 	end
 
 end
