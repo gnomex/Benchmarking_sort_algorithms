@@ -8,11 +8,11 @@
       </section> 
   </section>
 
-  <section class="" id="file-contents">
+  <section>
   <table class="table table-bordered table-striped">
     <thead>
         <tr>
-          <th># Arquivo</th>
+          <th>#</th>
           <th>BubbleSort</th>
           <th>BubbleSort Enhanced</th>
           <th>SelectionSort</th>
@@ -28,7 +28,9 @@
         <tr>
           <td><%= key %></td>
           <% value.each do |algorithm, tms| %>
-           <td><%= tms %></td>
+           <td>
+            <%= tms.to_a.last %>
+           </td>
           <% end %>
         </tr>
       <% end %>

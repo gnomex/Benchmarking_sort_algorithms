@@ -8,7 +8,7 @@ set :views, File.expand_path("../../views", __FILE__)
 
 set :static, true
 
-set :sessions, true
+set :sessions, false
 
 set :logging, true
 
