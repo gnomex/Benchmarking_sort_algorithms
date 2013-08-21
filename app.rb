@@ -8,13 +8,9 @@ configure do
 end
 
 helpers do
-
-	# def sort
+	# def load_report
 		
-	# 	#when sorts
-	# 	#render results ;)
 	# end
-
 end
 
 get '/' do

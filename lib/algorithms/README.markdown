@@ -36,8 +36,9 @@ Sort Algorithms
 <p>
 	<ul>
 		<li>Bubble Sort <strong>Melhorado</strong></li>
-		<li>Funciona de forma semelhante ao <strong>Bubble Sort</strong>, porém mantém controle
+		<li><blockquote>Funciona de forma semelhante ao <strong>Bubble Sort</strong>, porém mantém controle
 		do número de trocas em cada laço da interação
+		</blockquote>
 		</li>
 		<li>
 			<p>Complexidade</p>
@@ -70,7 +71,7 @@ Sort Algorithms
 
 <p>
 	<ul>
-		<li>Coloca cada elemento na posição correta em relação aos anteriores</li>
+		<li><blockquote>Coloca cada elemento na posição correta em relação aos anteriores</blockquote></li>
 		<li>
 			<p>Complexidade</p>
 			<ol>
@@ -100,7 +101,7 @@ Sort Algorithms
 <p>
 	<ul>
 		<li>Um dos algoritmos mais simples de ordenação</li>
-		<li>Seleciona o menor elemento do array, e troca com a primeira posição do array</li>
+		<li><blockquote>Seleciona o menor elemento do array, e troca com a primeira posição do array</blockquote></li>
 		<li>
 			<p>Complexidade</p>
 			<ol>
@@ -132,7 +133,7 @@ Sort Algorithms
 <p>
 	<ul>
 		<li>Refinamento do método de inserção direta</li>
-		<li>Aproxima os elementos distântes para a posição mais perto da certa</li>
+		<li><blockquote>Aproxima os elementos distântes para a posição mais perto da certa</blockquote></li>
 		<li>
 			<p>Complexidade</p>
 			<ol>
@@ -166,8 +167,8 @@ Sort Algorithms
 <p>
 	<ul>
 		<li>Converte o problema de ordenar em problemas menores</li>
-		<li>Cada problema menor é ordenado e combinado com outros problemas para produzir uma solução maior</li>
-		<li>É escolhido um elemento do vetor e são construidos dois problemas, um com os maiores e outro com os menores que o elemento</li>
+		<li><blockquote>Cada problema menor é ordenado e combinado com outros problemas para produzir uma solução maior</blockquote></li>
+		<li><blockquote>É escolhido um elemento do vetor e são construidos dois problemas, um com os maiores e outro com os menores que o elemento</blockquote></li>
 		<li>
 			<p>Complexidade</p>
 			<ol>
