@@ -5,7 +5,7 @@ module Benchmarks
 	def self.sort_and_measure(collection_of_samples, logger)
 		
 		sorts = %w(bubble_sort bubble_sort_enhanced selection_sort insertion_sort heapsort
-      shell_sort quicksort mergesort)
+      shell_sort invoke_quick_sort shaker_sort mergesort radix_sorts)
 
 		results = Hash.new(0)
 

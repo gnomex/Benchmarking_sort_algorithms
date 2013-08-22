@@ -124,13 +124,16 @@ module Algorithms::Sort
   #   Algorithms::Sort.shell_sort [5, 4, 3, 1, 2] => [1, 2, 3, 4, 5]
   def self.shell_sort(container)
     increment = container.size/2
-    while increment > 0 do
+    flag = true
+    while (increment > 0) && flag do
+      flag = false
       (increment..container.size-1).each do |i|
         temp = container[i]
         j = i
         while j >= increment && container[j - increment] > temp do
           container[j] = container[j-increment]
           j -= increment
+          flag = true
         end
         container[j] = temp
       end
@@ -213,6 +216,32 @@ module Algorithms::Sort
     end
     container    
   end
+  #A paa class room implementation
+
+  def self.invoke_quick_sort(container)
+    quick_sort(container, 0, container.size)
+  end
+
+  def self.quick_sort(container, left, right)
+    i = 0
+
+    if left < right
+      pivot = left
+
+      i = left + 1
+
+      while i < right do
+        container[i], container[++pivot] = container[++pivot], container[i] if container[i] < container[left]
+        i+=1
+      end
+
+      container[left], container[pivot] = container[pivot], container[left]
+
+      quick_sort(container, left, pivot)
+      quick_sort(container, pivot + 1, right)
+    end
+    container
+  end
 
   # Mergesort: A stable divide-and-conquer sort that sorts small chunks of the container and then merges them together.
   # Returns an array of the sorted elements.
@@ -236,6 +265,83 @@ module Algorithms::Sort
       left.first <= right.first ? sorted << left.shift : sorted << right.shift
     end
     sorted + left + right
+  end
+
+  #
+  #
+  #
+  def self.shaker_sort(container)
+    move = true
+    while move do
+      move = false
+      i = 0
+      while i < (container.size - 1) do
+        if container[i] > container[i + 1]
+          container[i], container[i + 1] =  container[i + 1], container[i]
+          move = true
+        end   
+        i+=1       
+      end
+      i = container.size - 1
+      while i > 0 do
+        if container[i] < container[i - 1]
+          container[i], container[i - 1] =  container[i - 1], container[i]
+          move = true
+        end   
+        i-=1 
+      end
+    end  
+    container  
+  end
+
+  def self.radix_sort(container)
+    n = container.size
+    aux = Array.new(n)
+    bigger = container.first
+    exp = 1
+    
+    i = 1
+
+    while i < n do
+      bigger = container[i] if bigger > container[i]
+      i+=1
+    end
+
+    while (bigger / exp) > 0 do
+      dec = Array.new(10)
+      j = 0
+      while j < dec.size do
+        dec[j] = 0
+        j+=1
+      end
+
+      j = 1
+      while j < n do
+        dec[(container[j] / exp) % 10 ]++
+        j+=1
+      end
+
+      j = 1
+      while j < 10 do
+        dec[j] += dec[j - 1]
+        j+=1
+      end
+
+      j = n - 1
+      while j >= 0 do
+        aux[--dec[(container[j] / exp) % 10 ]] = container[j]
+        j-=1
+      end
+
+      j = 0
+      while j < n do
+        container[j] = aux[j]
+        j+=1
+      end
+
+      exp *=10
+    end
+    container
   end
 
   # Dual-Pivot Quicksort is a variation of Quicksort by Vladimir Yaroslavskiy.
